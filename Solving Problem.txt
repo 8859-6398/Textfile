@@ -1,0 +1,89 @@
+1. string reverse-------23
+2.count of each word in string---------23
+3.assending order of int array// ------23
+4.higest value of int array//----------------23
+5.second higest value of int array//---------------------23
+6. remove dulicates words of a string//------------23
+7.swaping value of two variable with out using third variable//================== 23
+8. biggest letter of string //-------------23
+9. odd number between 1 to any number//-----------------23
+10.check number odd or even//---------------23
+11.paramid using loop
+12. how many carahcter is small or capital in string//--------------23
+13.check how many time a letter is avilable or in which place//---------------------------complete
+14.What is Big-O notation
+
+
+     int maxValue = 0;
+            int secondMaxValue = 0;
+            for (int i = 0; i < length.Length; i++)
+            {
+                if (length[i] > maxValue)
+                {
+                    secondMaxValue = maxValue;
+                    maxValue = length[i];
+                }
+                else if (length[i] > secondMaxValue)
+                {
+                    secondMaxValue = length[i];
+                }
+            }
+            Console.WriteLine("First Largest number :" + maxValue);
+            Console.WriteLine("Second Largest number :" + secondMaxValue);
+           
+            Console.ReadLine();
+
+
+
+with duplicate
+as(
+select TicketNo,ROW_NUMBER()over(partition by TicketNo order by TicketNo) as rowss from tblFirstInspectionDetail
+)
+delete duplicate where rowss>1
+
+
+select * from tblFirstInspectionDetail where TicketNo<=(select count(TicketNo/2) from tblFirstInspectionDetail)
+
+
+
+SELECT * 
+FROM tblFirstInspectionDetail WHERE
+TicketNo <= (SELECT COUNT(TicketNo)/2 from tblFirstInspectionDetail);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	--	Select               
+			--	 LTRIM(RTRIM(UniqueId)),     
+			--	 LTRIM(RTRIM(FarmerId)),     
+			--	 LTRIM(RTRIM(LandCropId)),     
+			--	 LTRIM(RTRIM(Season)),          
+			--	 LTRIM(RTRIM(SeedArea)),        
+			--	 LTRIM(RTRIM(RejectedArea)),      
+			--	 LTRIM(RTRIM(TicketNo)),      
+			--	 GETDATE(),        
+			--	 LTRIM(RTRIM(CreateUser))     
+	  --FROM                     
+	  --OPENJSON(@RejectCount)          
+	  --with( 
+	  --UniqueId NVARCHAR(255),     
+	  --FarmerId NVARCHAR(255),       
+	  --LandCropId NVARCHAR(255),         
+	  --Season NVARCHAR(255),       
+	  --SeedArea NVARCHAR(255),   
+	  --RejectedArea NVARCHAR(255),     
+	  --TicketNo NVARCHAR(255),
+	  -- CreateDate NVARCHAR(255),
+	  --CreateUser NVARCHAR(255)
+	
+	  --);
